@@ -1,16 +1,13 @@
-// *KEYFRAMES*
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+--header-line-width-left {
+    width: 100%;
 }
 
-// *STYLES*
-// MAIN
+--header-line-width-right {
+    width: 0%;
+}
+
+
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -18,74 +15,163 @@
     height: 5rem;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 3rem 0 5rem;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff0;
+    transition: all 0.5s ease;
 }
 
-// .logo {
-//     padding: 1.5em;
+// .header.scrolled::after {
+//     content: "";
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 2px;
+//     background-color: #ddd;
+//     transition: width 0.5s ease, opacity 0.5s ease;
 // }
 
-// LOGO
-// .header__logo {
-//     margin-left: 10px;
-// }
-.header__logo-img {
-    display: block;
-    height: 4rem;
-    will-change: filter;
-    transition: filter 1000ms;
-    animation: logo-spin 40s infinite;
-    background-color: #242424;
-    border-radius: 50%;
-    
+.header::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    // width: 83.1%;
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+    // transition: width 0.5s ease, opacity 0.5s ease;
+    transition: width 0.5s ease;
+}
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    // width: 9%;
+    width: 0%;
+    height: 2px;
+    background-color: #ddd;
+    // transition: width 0.5s ease, opacity 0.5s ease;
+    transition: width 0.5s ease;
 }
 
-// .header__logo-img:hover {
-//     filter: drop-shadow(0 0 0.8em #ffa603);
+.header.item__open::before {
+    width: var(--header-line-width-left);
+}
+
+.header.item__open::after {
+    width: var(--header-line-width-right);
+}
+
+// .header.scrolled.item__open::before {
+//     width: 100%;
 // }
 
-.header__menu-list,
-.header__menu {
+// .header.scrolled.item__open::after {
+//     width: 0;
+// }
+
+.header.scrolled {
+    position: fixed;
+    background: #1E1E1E;
+    height: 2.5rem;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav__list {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.header__menu {
-    height: 100%;
+.nav__item {
+    padding: 5px;
 }
 
-.header__menu-item {
-    padding: 5px
+.nav__link {
+    text-decoration: none;
 }
 
-// LANG SWITCHER
-.header__menu-switch-language {
+.logo,
+.logo-block {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    min-width: 42px;
+}
+
+.logo-block {
     position: relative;
-    display: inline-block;
+    justify-content: space-between;
+    gap: 3rem;
 }
 
-.header__menu-switch-language-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    right: 0;
-}
-
-.header__menu-switch-language-image,
-.header__menu-switch-language {
-    width: 3rem;
+.logo__img {
     height: 3rem;
-    // border-radius: 50%;
+    transition: all 0.5s ease;
+    margin: 0 auto;
 }
 
-// TEST
-.header {
-    position: sticky;
-    top: 0;
-    background-color: #242424;
-    z-index: 1000;
-    // box-shadow: -4px -4px 12px hsla(0, 0%, 100%, .05), 4px 4px 12px #000;
-    // box-shadow: 0px 2px 12px 2px #ffa603;
-    box-shadow: 0px 2px 12px 2px #000;
+.header.scrolled .logo__img {
+    height: 2rem;
+}
+
+.lang-switcher {
+    position: relative;
+    width: 120px;
+}
+
+.lang-switcher__button {
+    cursor: pointer;
+}
+
+.lang-switcher__dropdown {
+    position: absolute;
+    top: calc(100% + 1.7rem);
+    background: transparent;
+    border: 1px solid #fff;
+    border-top: 0;
+    transition: all 0.5s ease;
+    z-index: 1001;
+    padding: 5px 0;
+    width: 120px;
+}
+
+.header.scrolled .lang-switcher__dropdown {
+    background: #1E1E1E;
+    top: calc(100% + 0.4rem);
+}
+
+.lang-switcher__option {
+    padding: 0.5rem;
+}
+
+.lang-switcher__link {
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    color: #fff;
+    transition: background 0.5s ease;
+}
+
+.lang-switcher__link:hover {
+    background: transparent;
+}
+
+.header.scrolled .lang-switcher__link {
+    color: white;
+}
+
+.header.scrolled .lang-switcher__link:hover {
+    background: #444;
 }

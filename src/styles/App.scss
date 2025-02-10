@@ -1,13 +1,40 @@
 // *STYLES*
+:root {
+  --font-size-base: 16px;
+  --font-size-lg: 1.25rem;
+  --font-size-sm: 0.875rem;
+  --line-height-base: 1.5;
+  --font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+p {
+  font-size: var(--font-size-base);
+}
+
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-a {
-  color: #ffa603;
+button {
+  background: unset;
+  border: unset;
+  padding: unset;
+  margin: unset;
+}
+
+a,
+.link {
+  color: #f57b01;
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:hover {
@@ -26,7 +53,6 @@ a:hover {
   padding: 0;
   text-align: center;
   box-sizing: border-box;
-  max-width: 1980px;
   margin: 0 auto;
 }
 
@@ -36,4 +62,10 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+header, main, :root {
+  max-width: 1980px;
+  margin: 0 auto;
 }

@@ -1,12 +1,17 @@
 {
+  "lang-ru": "Русский",
+  "lang-en": "English",
+  "lang-ru-short": "Rus",
+  "lang-en-short": "Eng",
   "pageTitle": "Stanislav Polyanikov. Frontend developer and magician&nbsp;&#129497;",
   "welcome": "welcome, this is my website",
   "menuNavs": {
-    "about": "About",
+    "home": "Home",
     "skills": "Skills",
-    "portfolio": "Portfolio",
-    "workExperience": "Work Experience",
-    "contacts": "Contacts"
+    "projects": "Projects",
+    "workJourney": "Work journey",
+    "contacts": "Contacts",
+    "switcher": "Switch me"
   },
   "logoTitle": "To home page",
   "description": "This is an English version"
