@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { scrollToSection } from '../../utils/scroll';
 import { useTranslation } from 'react-i18next';
 import './Header.scss';
 
@@ -14,6 +15,7 @@ function Header() {
 
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
+    console.log('cliked inside!');
     setIsDropdownOpen(!isDropdownOpen);
   };
 
@@ -41,6 +43,20 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!(event.target as HTMLElement).closest('.lang-switcher')) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isDropdownOpen]);
+
   return (
     <header
       style={
@@ -54,32 +70,74 @@ function Header() {
       <nav className="nav">
         <ul className="nav__list">
           <li className="nav__item">
-            <a className="nav__link link_active" href="#home">
+            <a
+              className="nav__link link link_active"
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('#home');
+              }}
+            >
               {t('menuNavs.home') || 'Home'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link link" href="#skills">
+            <a
+              className="nav__link link"
+              href="#skills"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('#skills');
+              }}
+            >
               {t('menuNavs.skills') || 'Skills'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link link" href="#Projects">
+            <a
+              className="nav__link link"
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('#projects');
+              }}
+            >
               {t('menuNavs.projects') || 'Projects'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link link" href="#workJourney">
+            <a
+              className="nav__link link"
+              href="#workJourney"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('#workJourney');
+              }}
+            >
               {t('menuNavs.workJourney') || 'Work journey'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link link" href="#contacts">
+            <a
+              className="nav__link link"
+              href="#contacts"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('#contacts');
+              }}
+            >
               {t('menuNavs.contacts') || 'Contacts'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link link" href="#switcher">
+            <a
+              className="nav__link link"
+              href="#switcher"
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   scrollToSection('#switcher');
+              // }}
+            >
               {t('menuNavs.switcher') || 'Switch me'}
             </a>
           </li>
@@ -89,7 +147,7 @@ function Header() {
       <div className="logo-block">
         <div className="lang-switcher">
           <button
-            className="lang-switcher__button link_active"
+            className="lang-switcher__button link link_active"
             onClick={() => {
               setIsDropdownOpen(!isDropdownOpen);
               handleChangeWidth();

@@ -1,8 +1,10 @@
+import './Contacts.scss';
+
 function Contacts() {
   return (
-    <div>
-      <h1>Привет, это мой сайт-визитка!</h1>
-    </div>
+    <section className="contacts-section" id="contacts">
+      <h1>Contacts</h1>
+    </section>
   );
 }
 

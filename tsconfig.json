@@ -1,12 +1,11 @@
 {
-  // "files": [],
-  // "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
   "compilerOptions": {
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/types/vite-env.d.ts" // Указываем путь к файлу
-  ]
+  "include": ["src", "src/**/*.ts", "src/**/*.tsx", "src/types/vite-env.d.ts"]
 }

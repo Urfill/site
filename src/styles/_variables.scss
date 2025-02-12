@@ -1,2 +1,37 @@
-$main-bg-color: #242424;
-$main-can-be-active-color: #ffa603;
+// FONT
+$font-size-base: 16px;
+$font-size-lg: 1.25rem;
+$font-size-sm: 0.875rem;
+$line-height-base: 1.5;
+$font-family: 'Roboto', sans-serif;
+
+
+// COLORS
+// common colors
+$active-color: #f57b01;
+// $link-hover-color: #12b9f6;
+
+// dark-theme colors
+$dark-theme-main-color: #0B0D05;
+$dark-theme-second-color: #2d2d2d;
+$dark-theme-header-border-color: #ddd;
+
+// light-theme colors
+$light-theme-main-color: #ddd;
+
+
+// SPACE
+$lang-switcher-width: 120px;
+$header-line-width-left: 100%;
+$header-line-width-right: 0%;
+
+
+// TIME
+$standart-time: 0.5s;
+
+
+// TO CHANGE
+:root {
+  --header-line-width-left: $header-line-width-left;
+  --header-line-width-right: $header-line-width-right;
+}

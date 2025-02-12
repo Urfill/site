@@ -1,79 +1,15 @@
-// *STYLES*
-:root {
-  --font-size-base: 16px;
-  --font-size-lg: 1.25rem;
-  --font-size-sm: 0.875rem;
-  --line-height-base: 1.5;
-  --font-family: 'Roboto', sans-serif;
+@import './../styles/variables';
+
+.dark-bg-theme-main {
+    background-color: $dark-theme-second-color;
 }
 
-body {
-  font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
+.dark-bg-theme-second {
+    background-color: $dark-theme-main-color;
 }
 
-p {
-  font-size: var(--font-size-base);
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-button {
-  background: unset;
-  border: unset;
-  padding: unset;
-  margin: unset;
-}
-
-a {
-  color: #fff;
-}
-
-a,
-.link {
-  // color: #f57b01;
-  text-decoration: none;
-  cursor: pointer;
-
-  &_active {
-    color: #f57b01;
-  }
-}
-
-a:hover {
-  transition: 1s;
-  color: #12b9f6;
-}
-
-.hidden {
-  display: none;
-}
-
-#root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.main,
-#root {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-header, main, :root {
-  max-width: 1980px;
-  margin: 0 auto;
+// TEST
+section {
+    height: 1000px;
+    scroll-margin-top: 80px;
 }

@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
-import './App.scss';
 import useThemeStore from './../store/themeStore';
+import './App.scss';
 
 import { I18nextProvider } from 'react-i18next';
 import i18n from './../utils/i18n.ts';
 
 import Header from './Header/Header.tsx';
 import Home from './Home/Home.tsx';
+import Skills from './Skills/Skills.tsx';
 import Projects from './Projects/Projects.tsx';
+import WorkJourney from './WorkJourney/WorkJourney.tsx';
 import Contacts from './Contacts/Contacts.tsx';
 import Footer from './Footer/Footer.tsx';
 
@@ -26,7 +28,10 @@ const App: React.FC = () => {
   }, [setTheme]);
 
   useEffect(() => {
-    document.body.className = `${theme}-bg-theme`;
+    const bodyNode = document.body;
+    const rootNode = bodyNode.querySelector('#root');
+    bodyNode.className = `${theme}-bg-theme-main`;
+    rootNode.className = `${theme}-bg-theme-second`;
   }, [theme]);
 
   useEffect(() => {
@@ -39,7 +44,9 @@ const App: React.FC = () => {
       <Header />
       <main className="main">
         <Home />
+        <Skills />
         <Projects />
+        <WorkJourney />
         <Contacts />
         <Footer />
       </main>

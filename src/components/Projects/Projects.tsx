@@ -1,8 +1,10 @@
+import './Projects.scss';
+
 function Projects() {
   return (
-    <div>
-      <h1>Привет, это мой сайт-визитка!</h1>
-    </div>
+    <section className="projects-section" id="projects">
+      <h1>Projects</h1>
+    </section>
   );
 }
 
