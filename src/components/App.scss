@@ -30,11 +30,19 @@ button {
   margin: unset;
 }
 
+a {
+  color: #fff;
+}
+
 a,
 .link {
-  color: #f57b01;
+  // color: #f57b01;
   text-decoration: none;
   cursor: pointer;
+
+  &_active {
+    color: #f57b01;
+  }
 }
 
 a:hover {

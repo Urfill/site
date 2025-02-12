@@ -7,10 +7,18 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #f8f8f8;
+  // background-color: #f8f8f8;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: #2d2d2d;
+}
+
+.dark-bg-theme {
+  background-color: #212121;
 }

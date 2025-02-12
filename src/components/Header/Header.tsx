@@ -21,16 +21,16 @@ function Header() {
   const [rigthLineWidth, setRigthLineWidth] = useState(0);
 
   const handleChangeWidth = () => {
-    const listNode = document.querySelector('.lang-switcher');
-    const fullWidth = document.documentElement.scrollWidth;
-    const tillListNodePX = listNode!.getBoundingClientRect().left;
-    const afterListNodePX = listNode!.getBoundingClientRect().right;
-    setLeftLineWidth(tillListNodePX);
-    setRigthLineWidth(fullWidth - afterListNodePX);
+    const headerNode = document.querySelector('.header')!;
+    const containerListNode = headerNode.querySelector('.logo-block') as HTMLElement;
+    const listNode = headerNode.querySelector('.lang-switcher')!;
 
-    console.log(
-      `width: ${tillListNodePX - afterListNodePX} left: ${tillListNodePX} right: ${fullWidth - afterListNodePX}`
-    );
+    const headerWidth = headerNode.scrollWidth;
+    const listWidth = listNode.scrollWidth;
+    const widthTillList = containerListNode.offsetLeft;
+
+    setLeftLineWidth(widthTillList);
+    setRigthLineWidth(headerWidth - widthTillList - listWidth);
   };
 
   useEffect(() => {
@@ -54,32 +54,32 @@ function Header() {
       <nav className="nav">
         <ul className="nav__list">
           <li className="nav__item">
-            <a className="nav__link" href="#home">
+            <a className="nav__link link_active" href="#home">
               {t('menuNavs.home') || 'Home'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link" href="#skills">
+            <a className="nav__link link" href="#skills">
               {t('menuNavs.skills') || 'Skills'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link" href="#Projects">
+            <a className="nav__link link" href="#Projects">
               {t('menuNavs.projects') || 'Projects'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link" href="#workJourney">
+            <a className="nav__link link" href="#workJourney">
               {t('menuNavs.workJourney') || 'Work journey'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link" href="#contacts">
+            <a className="nav__link link" href="#contacts">
               {t('menuNavs.contacts') || 'Contacts'}
             </a>
           </li>
           <li className="nav__item">
-            <a className="nav__link" href="#switcher">
+            <a className="nav__link link" href="#switcher">
               {t('menuNavs.switcher') || 'Switch me'}
             </a>
           </li>
@@ -89,7 +89,7 @@ function Header() {
       <div className="logo-block">
         <div className="lang-switcher">
           <button
-            className="lang-switcher__button link"
+            className="lang-switcher__button link_active"
             onClick={() => {
               setIsDropdownOpen(!isDropdownOpen);
               handleChangeWidth();
