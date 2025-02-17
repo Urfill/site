@@ -14,5 +14,11 @@
     "switcher": "Switch me"
   },
   "logoTitle": "To home page",
-  "description": "This is an English version"
+
+  "home": {
+    "greetings": "Hi",
+    "welcomeTextName": "i'm Stas!",
+    "welcomeTextH2": "Welcome to my portfolio",
+    "welcomeTextP": "As a front-end developer, I specialize in creating fast and user-friendly web applications. Let's bring your ideas to life with innovative solutions"
+  }
 }

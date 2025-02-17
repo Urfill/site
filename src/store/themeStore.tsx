@@ -1,14 +1,12 @@
-// Определяем интерфейс для темы
+import { create } from 'zustand';
+
 export interface ThemeState {
   theme: 'light' | 'dark';
   setTheme: (theme: 'light' | 'dark') => void;
 }
 
-// Создаем Zustand store
-import { create } from 'zustand';
-
 const useThemeStore = create<ThemeState>((set) => ({
-  theme: 'light', // начальная тема
+  theme: 'light',
   setTheme: (theme) => set({ theme }),
 }));
 

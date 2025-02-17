@@ -4,6 +4,7 @@ import './App.scss';
 
 import { I18nextProvider } from 'react-i18next';
 import i18n from './../utils/i18n.ts';
+import { useFullPageScroll } from './../utils/fullPageScroll.jsx';
 
 import Header from './Header/Header.tsx';
 import Home from './Home/Home.tsx';
@@ -38,6 +39,8 @@ const App: React.FC = () => {
     const language = localStorage.getItem('language') ?? 'en';
     i18n.changeLanguage(language);
   }, []);
+
+  useFullPageScroll('#home, #skills, #projects, #workJourney, #contacts');
 
   return (
     <I18nextProvider i18n={i18n}>

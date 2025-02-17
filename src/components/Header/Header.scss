@@ -7,7 +7,7 @@
   height: 5rem;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 3rem 0 5rem;
+  padding: $standart-block-padding;
   position: absolute;
   top: 0;
   z-index: 1000;
@@ -105,14 +105,14 @@
 }
 
 .lang-switcher__button::after {
-  content: url(./assets/menu-arrow.svg);
+  content: url(./assets/common/menu-arrow.svg);
   position: absolute;
   bottom: 4px;
   left: 4rem;
   height: 10px;
   transition: transform $standart-time ease;
   background-color: $active-color;
-  mask-image: url(./assets/menu-arrow.svg);
+  mask-image: url(./assets/common/menu-arrow.svg);
   mask-repeat: no-repeat;
 }
 

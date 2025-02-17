@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { scrollToSection } from '../../utils/scroll';
 import { useTranslation } from 'react-i18next';
+import { useScrollStore } from '../../store/scrollStore';
 import './Header.scss';
 
 function Header() {
@@ -8,6 +9,7 @@ function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currLang, setCurrLang] = useState(true);
   const [scrolled, setScrolled] = useState(false);
+  const { setCurrentIndex, currentIndex } = useScrollStore();
 
   useEffect(() => {
     setCurrLang(i18n.language === 'en');
@@ -15,7 +17,6 @@ function Header() {
 
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
-    console.log('cliked inside!');
     setIsDropdownOpen(!isDropdownOpen);
   };
 
@@ -71,10 +72,11 @@ function Header() {
         <ul className="nav__list">
           <li className="nav__item">
             <a
-              className="nav__link link link_active"
+              className={`nav__link link ${currentIndex === 0 ? 'link_active' : ''}`}
               href="#home"
               onClick={(e) => {
                 e.preventDefault();
+                setCurrentIndex(0);
                 scrollToSection('#home');
               }}
             >
@@ -83,10 +85,11 @@ function Header() {
           </li>
           <li className="nav__item">
             <a
-              className="nav__link link"
+              className={`nav__link link ${currentIndex === 1 ? 'link_active' : ''}`}
               href="#skills"
               onClick={(e) => {
                 e.preventDefault();
+                setCurrentIndex(1);
                 scrollToSection('#skills');
               }}
             >
@@ -95,10 +98,11 @@ function Header() {
           </li>
           <li className="nav__item">
             <a
-              className="nav__link link"
+              className={`nav__link link ${currentIndex === 2 ? 'link_active' : ''}`}
               href="#projects"
               onClick={(e) => {
                 e.preventDefault();
+                setCurrentIndex(2);
                 scrollToSection('#projects');
               }}
             >
@@ -107,10 +111,11 @@ function Header() {
           </li>
           <li className="nav__item">
             <a
-              className="nav__link link"
+              className={`nav__link link ${currentIndex === 3 ? 'link_active' : ''}`}
               href="#workJourney"
               onClick={(e) => {
                 e.preventDefault();
+                setCurrentIndex(3);
                 scrollToSection('#workJourney');
               }}
             >
@@ -119,19 +124,20 @@ function Header() {
           </li>
           <li className="nav__item">
             <a
-              className="nav__link link"
+              className={`nav__link link ${currentIndex === 4 ? 'link_active' : ''}`}
               href="#contacts"
               onClick={(e) => {
                 e.preventDefault();
+                setCurrentIndex(4);
                 scrollToSection('#contacts');
               }}
             >
               {t('menuNavs.contacts') || 'Contacts'}
             </a>
           </li>
-          <li className="nav__item">
+          {/* <li className="nav__item">
             <a
-              className="nav__link link"
+              className={`nav__link link ${currentIndex === 0 ? 'link_active' : ''}`}
               href="#switcher"
               // onClick={(e) => {
               //   e.preventDefault();
@@ -140,7 +146,7 @@ function Header() {
             >
               {t('menuNavs.switcher') || 'Switch me'}
             </a>
-          </li>
+          </li> */}
         </ul>
       </nav>
 
@@ -185,8 +191,8 @@ function Header() {
           )}
         </div>
 
-        <a href="/" className="logo" aria-label="To home page">
-          <img src="/assets/subtract-1.png" alt="Logo" className="logo__img" />
+        <a href="/" className="logo" aria-label="To home page" title="To home page">
+          <img src="/assets/logo/subtract-1.png" alt="Logo" className="logo__img" />
         </a>
       </div>
     </header>

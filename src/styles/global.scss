@@ -66,13 +66,14 @@ main,
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+  transition: all $standart-time;
 
   &_active {
     color: $active-color;
   }
 
   &:hover {
-    transition: 1s;
+    transition: $standart-time;
     color: $active-color;
     // color: $link-hover-color;
   }
