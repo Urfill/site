@@ -1,5 +1,10 @@
 @import './../styles/variables';
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
+
 .dark-bg-theme-main {
     background-color: $dark-theme-second-color;
 }
@@ -9,7 +14,7 @@
 }
 
 // TEST
-section {
-    height: 1000px;
-    scroll-margin-top: 80px;
-}
+// section {
+//     // height: 1000px;
+//     // scroll-margin-top: 80px;
+// }

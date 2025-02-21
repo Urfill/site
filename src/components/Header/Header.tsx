@@ -192,7 +192,7 @@ function Header() {
         </div>
 
         <a href="/" className="logo" aria-label="To home page" title="To home page">
-          <img src="/assets/logo/subtract-1.png" alt="Logo" className="logo__img" />
+          <img src="/assets/logo/subtract-1.svg" alt="Logo" className="logo__img" />
         </a>
       </div>
     </header>

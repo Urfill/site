@@ -7,7 +7,7 @@
   height: 5rem;
   width: 100%;
   box-sizing: border-box;
-  padding: $standart-block-padding;
+  padding: $standart-header-padding;
   position: absolute;
   top: 0;
   z-index: 1000;
@@ -47,7 +47,7 @@
   &.scrolled {
     position: fixed;
     background: $dark-theme-main-color;
-    height: 2.5rem;
+    height: 2.6rem;
   }
 }
 
@@ -79,7 +79,7 @@
 .logo-block {
   position: relative;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 1.8rem;
 }
 
 .logo__img {
@@ -89,7 +89,7 @@
 }
 
 .header.scrolled .logo__img {
-  height: 2rem;
+  height: 1.85rem;
 }
 
 .lang-switcher {

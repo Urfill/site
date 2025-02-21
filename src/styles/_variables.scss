@@ -3,7 +3,7 @@ $font-size-base: 16px;
 $font-size-lg: 1.25rem;
 $font-size-sm: 0.875rem;
 $line-height-base: 1.5;
-$font-family: 'Roboto', sans-serif;
+$font-family: 'Roboto', 'Calibri', 'Arial', sans-serif;
 
 
 // COLORS
@@ -21,7 +21,8 @@ $light-theme-main-color: #ddd;
 
 
 // SPACE
-$standart-block-padding: 0 3rem 0 5rem;
+$standart-block-padding: 0 8rem 0 8rem;
+$standart-header-padding: 0 3rem 0 8rem;
 $lang-switcher-width: 120px;
 $header-line-width-left: 100%;
 $header-line-width-right: 0%;
