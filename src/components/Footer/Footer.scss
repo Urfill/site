@@ -1,10 +1,69 @@
+@import './../../styles/variables';
+
 .footer {
-    border: 3px solid #fff;
+    // border: 3px solid #fff;
     width: 100%;
+    height: 5rem;
     box-sizing: border-box;
     color: #fff;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+
+    &__credits {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    &__link {
+        color: #fff;
+        text-decoration: unset;
+        transition: all $standart-time ease;
+    }
+
+    &__link:hover {
+        color: $active-color;
+    }
+
+    &__credits-home {
+        &:hover::after {
+            background-color: $active-color;
+        }
+    }
+
+    &__credits-home::after {
+        height: 10px;
+        margin: 5px 0 0 0;
+        content: url(./assets/common/menu-arrow.svg);
+        mask-image: url(./assets/common/menu-arrow.svg);
+        position: absolute;
+        transform: rotate(180deg);
+        background-color: #fff;
+        mask-repeat: no-repeat;
+        transition: all $standart-time ease;
+    }
+
+    &__contacts {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__logo-link {
+        display: flex;
+        align-items: center;
+        height: 3rem;
+    }
+
+    &__logo-img {
+        height: 3rem;
+        transition: all $standart-time ease;
+        margin: 0 auto;
+      }
 }

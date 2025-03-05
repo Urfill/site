@@ -51,6 +51,7 @@ button {
   justify-content: center;
   align-items: center;
   width: 100%;
+  position: relative;
 }
 
 header,
@@ -69,8 +70,11 @@ section {
   display: flex;
   align-items: center;
   font-size: 1rem;
-  padding: 0 8rem 0 8rem;
   color: #eee;
+}
+
+footer, section {
+  padding: $standart-block-padding
 }
 
 // COMMON

@@ -37,6 +37,8 @@ img.projects__image {
 
 .projects__project-header {
     font-weight: bold;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .projects__project-text {
@@ -45,7 +47,7 @@ img.projects__image {
 
 .projects__description {
     border: 1px solid #eee;
-    // padding: 2rem 5rem 1rem;
+    padding: 2rem 5rem 1rem;
     width: 100%;
 }
 
