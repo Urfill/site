@@ -8,12 +8,12 @@ $font-family: 'Roboto', 'Calibri', 'Arial', sans-serif;
 
 // COLORS
 // common colors
-$active-color: #f57b01;
+$active-color: #B10622;
 // $link-hover-color: #12b9f6;
 
 // dark-theme colors
-$dark-theme-main-color: #0B0D05;
-$dark-theme-second-color: #2d2d2d;
+$dark-theme-main-color: #000;
+$dark-theme-second-color: #000;
 $dark-theme-header-border-color: #ddd;
 
 // light-theme colors
@@ -21,8 +21,8 @@ $light-theme-main-color: #ddd;
 
 
 // SPACE
-$standart-block-padding: 0 8rem 0 8rem;
-$standart-header-padding: 0 3rem 0 8rem;
+$standart-block-padding: 0 8rem 0 12rem;
+$standart-header-padding: 0 5rem 0 12rem;
 $lang-switcher-width: 120px;
 $header-line-width-left: 100%;
 $header-line-width-right: 0%;

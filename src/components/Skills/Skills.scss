@@ -34,7 +34,7 @@
 .skills__hard,
 .skills__soft {
   display: grid;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 // .skills__hard:not(:first-child),
@@ -43,7 +43,7 @@
 // }
 
 .skills__item {
-  padding: 15px 20px;
+  padding: 20px;
   border: 2px solid #eee;
   width: 100%;
   max-width: 690px;
@@ -57,18 +57,24 @@
   cursor: default;
 }
 
+.skills__item svg {
+  width: 24px;
+  height: 24px;
+} 
+
 .skills__hard-item {
-  box-shadow: 2px 2px 6px #593404, -4px -4px 6px #0096ffcc;
+  box-shadow: -4px -4px 4px #F97E5C;
 
   &:hover {
-    box-shadow: 4px 4px 6px #ff6600cc, -4px -4px 6px #0096ffcc;
+    box-shadow: 4px 4px 4px #B10622, -4px -4px 4px #F97E5C;
   }
 }
 
 .skills__soft-item {
-  box-shadow: 4px 4px 6px #ff6600cc, -2px -2px 6px #0178cdcc;
+  box-shadow: 4px 4px 4px #B10622;
+  // box-shadow: 4px 4px 6px #B10622, -2px -2px 6px #F97E5C;
 
   &:hover {
-    box-shadow: 4px 4px 6px #ff6600cc, -4px -4px 6px #0096ffcc;
+    box-shadow: -4px -4px 4px #F97E5C, 4px 4px 4px #B10622;
   }
 }

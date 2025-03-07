@@ -6,25 +6,29 @@
     align-items: flex-start;
     flex-direction: column;
     text-align: left;
-    background-image: url('/public/assets/background/bg-slot-1_v3.svg');
+    background-image: url('/public/assets/background/bg-top.svg');
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: bottom;
+    // background-position: bottom;
+    background-position: center;
 }
 
 .home__text-block {
-    max-width: 35rem;
+    // max-width: 35rem;
+    max-width: 43rem;
 }
 
 .home__greetings-block {
     max-width: 50rem;
+    margin-top: 12rem;
 }
 
 h1.home__greetings-header {
-    font-size: 3em;
-    line-height: 3.5rem;
+    font-size: 4em;
+    line-height: 4.5rem;
     margin: 0;
     padding: 0;
+    letter-spacing: 1px;
   }
 
 .home__greetings-header-highlight {
@@ -33,7 +37,8 @@ h1.home__greetings-header {
 
 .home__text {
     font-size: 1.3rem;
-    line-height: 2rem;
+    line-height: 2.4rem;
+    margin: 1.5rem 0 2rem;
 }
 
 .home__buttons-block {

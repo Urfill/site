@@ -20,7 +20,7 @@ function AboutMe() {
       <div className="home__text-block">
         <p className="home__text">
           {t('home.welcomeTextP') ||
-            "As a front-end developer, I specialize in creating fast and user-friendly web applications. Let's bring your ideas to life with innovative solutions"}
+            "As a front-end developer, I specialize in creating fast and user-friendly web applications. Let's bring your ideas to life with innovative solutions."}
         </p>
       </div>
       <div className="home__buttons-block">

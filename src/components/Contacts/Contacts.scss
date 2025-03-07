@@ -1,13 +1,16 @@
+@import './../../styles/variables';
+
 .contacts {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     text-align: left;
-    background-image: url('/public/assets/background/bg-contacts.svg');
+    background-image: url('/public/assets/background/bg-bottom.svg');
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: top;
+    // background-position: top;
+    background-position: bottom;
     gap: 3rem;
 
     &__header {
@@ -30,6 +33,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      margin-bottom: 10rem;
     }
 
     &__title-wrapper {
@@ -60,7 +64,7 @@
   
       &-link {
         margin-left: 2rem;
-        color: orange;
+        color: $active-color;
       }
     }
   }

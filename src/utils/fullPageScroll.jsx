@@ -14,19 +14,21 @@ export function useFullPageScroll(sectionsSelector = '#home, #skills, #projects,
     }
 
     function handleWheel(e) {
-      if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+      if ((e.deltaY > 0 || e.key === 'ArrowDown' || e.key === 'ArrowRight') && currentIndex < sections.length - 1) {
         setCurrentIndex(currentIndex + 1);
         scrollToSection(sections[currentIndex + 1]);
-      } else if (e.deltaY < 0 && currentIndex > 0) {
+      } else if ((e.deltaY < 0 || e.key === 'ArrowUp' || e.key === 'ArrowLeft') && currentIndex > 0) {
         setCurrentIndex(currentIndex - 1);
         scrollToSection(sections[currentIndex - 1]);
       }
     }
 
     window.addEventListener('wheel', handleWheel);
+    document.addEventListener('keydown', handleWheel);
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
+      document.removeEventListener('keydown', handleWheel);
     };
   }, [currentIndex, sectionsSelector]);
 

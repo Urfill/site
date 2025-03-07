@@ -9,7 +9,7 @@ function Footer() {
     <footer className="footer" id="footer">
       <h1 className="footer__logo">
         <a href="/" className="footer__logo-link" aria-label="To home page" title="To home page">
-          <img src="/assets/logo/subtract-1.svg" alt="Logo" className="footer__logo-img" />
+          <img src="/assets/logo/logo.svg" alt="Logo" className="footer__logo-img" />
         </a>
       </h1>
 
@@ -32,7 +32,7 @@ function Footer() {
 
       <div className="footer__contacts">
         <a href="https://github.com/Urfill/" target="_blank" className="footer__contacts-link" aria-label="GitHub">
-          <img src="/public/assets/icons/icon-git-footer.svg" alt="GitHub" />
+          <img src="/public/assets/icons/icon-git.svg" alt="GitHub" />
         </a>
         <a
           href="https://web.telegram.org/k/#@urfill"

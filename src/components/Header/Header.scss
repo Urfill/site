@@ -46,7 +46,7 @@
 
   &.scrolled {
     position: fixed;
-    background: $dark-theme-main-color;
+    background: transparent;
     height: 2.6rem;
   }
 }
@@ -143,7 +143,7 @@
 }
 
 .header.scrolled .lang-switcher__dropdown {
-  background: $dark-theme-main-color;
+  background: transparent;
   top: calc(100% + 0.45rem);
 }
 
