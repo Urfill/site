@@ -1,10 +1,17 @@
 import './Footer.scss';
 import { scrollToSection } from '../../utils/scroll';
 import { useScrollStore } from '../../store/scrollStore';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
   const { setCurrentIndex } = useScrollStore();
+  const { t, i18n } = useTranslation();
+  const [, setCurrLang] = useState(true);
 
+  useEffect(() => {
+    setCurrLang(i18n.language === 'en');
+  }, [i18n.language]);
   return (
     <footer className="footer" id="footer">
       <h1 className="footer__logo">
@@ -23,10 +30,10 @@ function Footer() {
           }}
           className="footer__credits-home footer__link"
         >
-          Home&nbsp;
+          {t('footer.btn') || 'To&nbsp;#Home&nbsp;'}&nbsp;
         </a>
         <a href="#" className="footer__credits-link footer__link">
-          Artwork Credits
+          {t('footer.credits') || 'Artwork Credits'}
         </a>
       </div>
 

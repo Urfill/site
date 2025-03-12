@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { scrollToSection } from '../../utils/scroll';
 import { useTranslation } from 'react-i18next';
 import { useScrollStore } from '../../store/scrollStore';
@@ -6,152 +6,108 @@ import './Header.scss';
 
 function Header() {
   const { t, i18n } = useTranslation();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [currLang, setCurrLang] = useState(true);
-  const [scrolled, setScrolled] = useState(false);
   const { setCurrentIndex, currentIndex } = useScrollStore();
-
-  useEffect(() => {
-    setCurrLang(i18n.language === 'en');
-  }, [i18n.language]);
-
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [leftLineWidth, setLeftLineWidth] = useState(0);
-  const [rigthLineWidth, setRigthLineWidth] = useState(0);
+  const [rightLineWidth, setRightLineWidth] = useState(0);
 
-  const handleChangeWidth = () => {
-    const headerNode = document.querySelector('.header')!;
-    const containerListNode = headerNode.querySelector('.logo-block') as HTMLElement;
-    const listNode = headerNode.querySelector('.lang-switcher')!;
+  const headerRef = useRef<HTMLElement>(null);
+  const langSwitcherRef = useRef<HTMLDivElement>(null);
 
-    const headerWidth = headerNode.scrollWidth;
-    const listWidth = listNode.scrollWidth;
-    const widthTillList = containerListNode.offsetLeft;
+  const navItems = [
+    { id: 'home', label: 'menuNavs.home' },
+    { id: 'skills', label: 'menuNavs.skills' },
+    { id: 'projects', label: 'menuNavs.projects' },
+    { id: 'workJourney', label: 'menuNavs.workJourney' },
+    { id: 'contacts', label: 'menuNavs.contacts' },
+  ];
 
-    setLeftLineWidth(widthTillList);
-    setRigthLineWidth(headerWidth - widthTillList - listWidth);
-  };
+  const languages = [
+    { code: 'en', label: 'lang-en' },
+    { code: 'ru', label: 'lang-ru' },
+  ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 1);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 1);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!(event.target as HTMLElement).closest('.lang-switcher')) {
+      if (langSwitcherRef.current && !langSwitcherRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
       }
     };
 
     if (isDropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
     }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, [isDropdownOpen]);
+
+  // Функция пересчета ширины полосок
+  const handleChangeWidth = () => {
+    if (!headerRef.current) return;
+
+    const headerNode = headerRef.current;
+    const containerListNode = headerNode.querySelector('.logo-block') as HTMLElement;
+    const listNode = headerNode.querySelector('.lang-switcher') as HTMLElement;
+
+    if (containerListNode && listNode) {
+      const headerWidth = headerNode.clientWidth;
+      const listWidth = listNode.clientWidth;
+      const widthTillList = containerListNode.offsetLeft;
+
+      setLeftLineWidth(widthTillList);
+      setRightLineWidth(headerWidth - widthTillList - listWidth);
+    }
+  };
+
+  // Вызываем пересчет при изменении размера окна
+  useEffect(() => {
+    handleChangeWidth();
+    window.addEventListener('resize', handleChangeWidth);
+    return () => window.removeEventListener('resize', handleChangeWidth);
+  }, []);
 
   return (
     <header
+      ref={headerRef}
+      className={`header ${scrolled ? 'scrolled' : ''} ${isDropdownOpen ? 'item__open' : ''}`}
       style={
         {
           '--header-line-width-left': `${leftLineWidth}px`,
-          '--header-line-width-right': `${rigthLineWidth}px`,
+          '--header-line-width-right': `${rightLineWidth}px`,
         } as React.CSSProperties
       }
-      className={`header ${scrolled ? 'scrolled' : ''} ${isDropdownOpen ? 'item__open' : ''}`}
     >
       <nav className="nav">
         <ul className="nav__list">
-          <li className="nav__item">
-            <a
-              className={`nav__link link ${currentIndex === 0 ? 'link_active' : ''}`}
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentIndex(0);
-                scrollToSection('#home');
-              }}
-            >
-              {t('menuNavs.home') || 'Home'}
-            </a>
-          </li>
-          <li className="nav__item">
-            <a
-              className={`nav__link link ${currentIndex === 1 ? 'link_active' : ''}`}
-              href="#skills"
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentIndex(1);
-                scrollToSection('#skills');
-              }}
-            >
-              {t('menuNavs.skills') || 'Skills'}
-            </a>
-          </li>
-          <li className="nav__item">
-            <a
-              className={`nav__link link ${currentIndex === 2 ? 'link_active' : ''}`}
-              href="#projects"
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentIndex(2);
-                scrollToSection('#projects');
-              }}
-            >
-              {t('menuNavs.projects') || 'Projects'}
-            </a>
-          </li>
-          <li className="nav__item">
-            <a
-              className={`nav__link link ${currentIndex === 3 ? 'link_active' : ''}`}
-              href="#workJourney"
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentIndex(3);
-                scrollToSection('#workJourney');
-              }}
-            >
-              {t('menuNavs.workJourney') || 'Work journey'}
-            </a>
-          </li>
-          <li className="nav__item">
-            <a
-              className={`nav__link link ${currentIndex === 4 ? 'link_active' : ''}`}
-              href="#contacts"
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentIndex(4);
-                scrollToSection('#contacts');
-              }}
-            >
-              {t('menuNavs.contacts') || 'Contacts'}
-            </a>
-          </li>
-          {/* <li className="nav__item">
-            <a
-              className={`nav__link link ${currentIndex === 0 ? 'link_active' : ''}`}
-              href="#switcher"
-              // onClick={(e) => {
-              //   e.preventDefault();
-              //   scrollToSection('#switcher');
-              // }}
-            >
-              {t('menuNavs.switcher') || 'Switch me'}
-            </a>
-          </li> */}
+          {navItems.map((item, index) => (
+            <li key={item.id} className="nav__item">
+              <a
+                className={`nav__link link ${currentIndex === index ? 'link_active' : ''}`}
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentIndex(index);
+                  scrollToSection(`#${item.id}`);
+                }}
+              >
+                {t(item.label) || item.id}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
 
       <div className="logo-block">
-        <div className="lang-switcher">
+        <div className="lang-switcher" ref={langSwitcherRef}>
           <button
             className="lang-switcher__button link link_active"
             onClick={() => {
@@ -159,34 +115,26 @@ function Header() {
               handleChangeWidth();
             }}
           >
-            {t(`lang-${currLang ? 'en' : 'ru'}`) || 'Language'}
+            {t(`lang-${i18n.language}`) || 'Language'}
           </button>
           {isDropdownOpen && (
             <ul className="lang-switcher__dropdown">
-              <li className="lang-switcher__option">
-                <a
-                  href="#"
-                  className="lang-switcher__link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    changeLanguage('en');
-                  }}
-                >
-                  {t('lang-en')}
-                </a>
-              </li>
-              <li className="lang-switcher__option">
-                <a
-                  href="#"
-                  className="lang-switcher__link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    changeLanguage('ru');
-                  }}
-                >
-                  {t('lang-ru')}
-                </a>
-              </li>
+              {languages.map((lang) => (
+                <li key={lang.code} className="lang-switcher__option">
+                  <a
+                    href="#"
+                    className="lang-switcher__link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      i18n.changeLanguage(lang.code);
+                      setIsDropdownOpen(false);
+                      handleChangeWidth();
+                    }}
+                  >
+                    {t(lang.label)}
+                  </a>
+                </li>
+              ))}
             </ul>
           )}
         </div>

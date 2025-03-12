@@ -49,20 +49,48 @@ h1.home__greetings-header {
 }
 
 .home__button {
+    position: relative;
     color: #eee;
     font-size: 1rem;
     padding: 1rem;
     border: 1px solid #000;
     background-color: transparent;
     cursor: pointer;
+    text-decoration: unset;
     transition: all $standart-time;
 
     &_active {
         background-color: #000;
     }
 
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        width: 1.5rem;
+        height: 10rem;
+
+        // width: 5rem;
+        // height: 1.5rem;
+        border: 2px solid $active-color;
+    }
+
+    &::before {
+        top: 0;
+        left: 0;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    &::after {
+        bottom: 0;
+        right: 0;
+        border-left: none;
+        border-top: none;
+        height: 1.5rem;
+    }
+
     &:hover {
         background-color: $active-color;
-        color: #000;
+        // color: #000;
     }
 }

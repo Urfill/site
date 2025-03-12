@@ -1,10 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { scrollToSection } from './scroll';
 import { useScrollStore } from '../store/scrollStore';
 
 export function useFullPageScroll(sectionsSelector = '#home, #skills, #projects, #workJourney, #contacts') {
   const { currentIndex, setCurrentIndex } = useScrollStore();
-  let prevEvent = useRef(undefined);
 
   useEffect(() => {
     const sections = document.querySelectorAll(sectionsSelector);
@@ -12,24 +11,6 @@ export function useFullPageScroll(sectionsSelector = '#home, #skills, #projects,
     if (sections.length === 0) {
       console.warn('fullPageScroll: Секции не найдены.');
       return;
-    }
-
-    function handleScroll(event) {
-      if (event.type === 'mouseup') {
-        prevEvent.current = undefined;
-        return;
-      } else if (event.type === 'mousedown') {
-        prevEvent.current = 'mousedown';
-      }
-
-      if (event.type === 'scroll' && prevEvent.current === 'mousedown') {
-        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-        const currentSectionIndex = Math.floor(scrollPosition / window.innerHeight);
-
-        if (currentSectionIndex !== currentIndex) {
-          setCurrentIndex(currentSectionIndex);
-        }
-      }
     }
 
     function handleWheel(e) {
@@ -44,16 +25,10 @@ export function useFullPageScroll(sectionsSelector = '#home, #skills, #projects,
 
     window.addEventListener('wheel', handleWheel);
     document.addEventListener('keydown', handleWheel);
-    document.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousedown', handleScroll);
-    document.addEventListener('mouseup', handleScroll);
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
       document.removeEventListener('keydown', handleWheel);
-      document.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mousedown', handleScroll);
-      document.removeEventListener('mouseup', handleScroll);
     };
   }, [currentIndex, sectionsSelector]);
 

@@ -1,12 +1,22 @@
 import './Contacts.scss';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Contacts() {
+  const { t, i18n } = useTranslation();
+  const [, setCurrLang] = useState(true);
+
+  useEffect(() => {
+    setCurrLang(i18n.language === 'en');
+  }, [i18n.language]);
   return (
     <section className="contacts" id="contacts">
       <div className="contacts__header">
-        <p className="contacts__hint">Get in Touch</p>
-        <h3 className="contacts__title">Contact Me</h3>
-        <p className="contacts__hint">I'd love to hear from you! Fill out the form below.</p>
+        <p className="contacts__hint">{t('contacts.article') || 'Get in Touch'}</p>
+        <h3 className="contacts__title">{t('contacts.header') || 'Contact Me'}</h3>
+        <p className="contacts__hint">
+          {t('contacts.hint') || 'I&apos;d love to hear from you! Fill out the form below.'}
+        </p>
       </div>
       <div className="contacts__content">
         <div className="contacts__item contacts__item--email">
@@ -17,13 +27,13 @@ function Contacts() {
                 fill="white"
               />
             </svg>
-            <span className="contacts__item-title">Email</span>
+            <span className="contacts__item-title">{t('contacts.email.text') || 'Email'}</span>
           </div>
           <a
             href="mailto:urfill21@gmail.com?subject=Вопрос по вашему сайту&body=Здравствуйте,%0A%0AМеня зовут ..."
             className="contacts__item-link"
           >
-            urfill21@gmail.com
+            {t('contacts.email.data') || 'urfill21@gmail.com'}
           </a>
         </div>
         <div className="contacts__item contacts__item--phone">
@@ -34,10 +44,10 @@ function Contacts() {
                 fill="white"
               />
             </svg>
-            <span className="contacts__item-title">Phone</span>
+            <span className="contacts__item-title">{t('contacts.phone.text') || 'Phone'}</span>
           </div>
           <a href="tel:+79013492694" className="contacts__item-link">
-            +7 (901) 349 26 94
+            {t('contacts.phone.data') || '+7 (901) 349 26 94'}
           </a>
         </div>
         <div className="contacts__item contacts__item--place">
@@ -52,7 +62,7 @@ function Contacts() {
                 fill="white"
               />
             </svg>
-            <span className="contacts__item-title">Kyrgyzstan</span>
+            <span className="contacts__item-title">{t('contacts.place.text') || 'Kyrgyzstan'}</span>
           </div>
         </div>
       </div>

@@ -19,6 +19,66 @@
     "greetings": "Hi",
     "welcomeTextName": "i'm Stas!",
     "welcomeTextH2": "Welcome to my portfolio",
-    "welcomeTextP": "As a front-end developer, I specialize in creating fast and user-friendly web applications. Let's bring your ideas to life with innovative solutions."
+    "welcomeTextP": "As a front-end developer, I specialize in creating fast and user-friendly web applications. Let's bring your ideas to life with innovative solutions.",
+    "btn": "Contact me"
+  },
+  "skills": {
+    "hard": {
+      "js": "JavaScript (ES6+/Node.js/Web APIs and browser compatibility)",
+      "frameworks": "Frameworks/Libraries (React.js)",
+      "html": "HTML/CSS (HTML5/BEM/RWD/SASS/SCSS...)",
+      "git": "Git",
+      "build-tools": "Build Tools (Webpack/Vite/Babel/NPM)",
+      "testing": "Testing (Jest/Mocha)",
+      "wcag": "WCAG standarts",
+      "xss": "Security Practices (XSS, CSRF, HTTPS)"
+    },
+    "soft": {
+      "team-work": "Collaboration with backend developers, UX/UI designers, and other team members",
+      "problem-solving": "Problem-solving and debugging",
+      "communication": "Communication and documentation skills"
+    }
+  },
+  "projects": {
+    "header": "Explore My Recent Projects",
+    "news": {
+      "header": "What's going on in the world?",
+      "text": "This news search app allows users to find up-to-date articles on various topics. You can log in to your account to save articles and create personalized collections relevant to your interests.",
+      "btn": "View",
+      "link": ""
+    },
+    "mesto": {
+      "header": "Mesto - Social Photo Sharing Platform",
+      "text": "Mesto is a social media platform for sharing and exploring photos. Users can create a profile, upload pictures, and showcase their favorite moments. The dark-themed interface highlights visuals, and the platform encourages engagement through user interactions.",
+      "btn": "Explore",
+      "link": ""
+    },
+    "yr": {
+      "header": "Advent calendar Yves Rocher",
+      "text": "An ideal gift to get acquainted with plant cosmetics or to add to the collection of already favorite products!",
+      "btn": "Discover",
+      "link": ""
+    }
+  },
+  "work-journey": {},
+  "contacts": {
+    "article": "Get in Touch",
+    "header": "Contact Me",
+    "hint": "I'd love to hear from you! Fill out the form below.",
+    "email": {
+      "text": "Email",
+      "data": "urfill21@gmail.com"
+    },
+    "phone": {
+      "text": "Phone",
+      "data": "+7 (901) 349 26 94"
+    },
+    "place": {
+      "text": "Kyrgyzstan"
+    }
+  },
+  "footer": {
+    "btn": "To #Home",
+    "credits": "Artwork Credits"
   }
 }

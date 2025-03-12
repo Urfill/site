@@ -4,7 +4,7 @@ import './App.scss';
 
 import { I18nextProvider } from 'react-i18next';
 import i18n from './../utils/i18n.ts';
-import { useFullPageScroll } from './../utils/fullPageScroll.jsx';
+import { useFullPageScroll } from '../utils/fullPageScroll.jsx';
 import { scrollToSection } from '../utils/scroll.ts';
 import { useScrollStore } from '../store/scrollStore.tsx';
 
